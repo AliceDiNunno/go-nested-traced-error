@@ -70,7 +70,7 @@ func (et *ErrorTrace) Fingerprint() string {
 	hash := ""
 	currentTrace := et
 	for {
-		hash = fmt.Sprintf(hash, currentTrace.Stack.Fingerprint())
+		hash = fmt.Sprintf("%s%s", hash, currentTrace.Stack.Fingerprint())
 		currentTrace = currentTrace.Child
 		if currentTrace.Child == nil {
 			break
