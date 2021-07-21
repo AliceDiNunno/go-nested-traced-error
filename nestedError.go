@@ -54,11 +54,13 @@ func fingerprint(str string) string {
 
 	fmt.Fprintf(hash, str)
 
+	println("calculating fingerprint of")
+	println(str)
+
 	return fmt.Sprintf("%x", hash.Sum32())
 }
 
 func (s Stack) Fingerprint() string {
-	println("")
 	hash := ""
 	for _, frame := range s {
 		hash = fmt.Sprintf("%s%s%s%d", hash, frame.Filename, frame.Method, frame.Line)
