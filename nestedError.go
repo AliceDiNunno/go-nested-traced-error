@@ -61,6 +61,7 @@ func fingerprint(str string) string {
 }
 
 func (s Stack) Fingerprint() string {
+	println("stack fingerprint")
 	hash := ""
 	for _, frame := range s {
 		hash = fmt.Sprintf("%s%s%s%d", hash, frame.Filename, frame.Method, frame.Line)
@@ -69,9 +70,11 @@ func (s Stack) Fingerprint() string {
 }
 
 func (et *ErrorTrace) Fingerprint() string {
+	println("global fingerprint")
 	hash := ""
 	currentTrace := et
 	for {
+		println(et.Err.Error())
 		hash = fmt.Sprintf("%s%s", hash, currentTrace.Stack.Fingerprint())
 		currentTrace = currentTrace.Child
 		if currentTrace.Child == nil {
