@@ -86,8 +86,14 @@ func getStack() Stack {
 		if !ok {
 			break
 		}
-		stack = append(stack, Frame{file, functionName(pc), line})
+		functionName := functionName(pc)
+
+		if !strings.HasPrefix(functionName, "go-nested-traced-error") {
+			stack = append(stack, Frame{file, functionName, line})
+		}
 	}
+
+	stack = stack[:len(stack)-1]
 
 	return stack
 }
