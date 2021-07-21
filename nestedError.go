@@ -77,7 +77,7 @@ func (et *ErrorTrace) Fingerprint() string {
 		println(et.Err.Error())
 		hash = fmt.Sprintf("%s%s", hash, currentTrace.Stack.Fingerprint())
 		currentTrace = currentTrace.Child
-		if currentTrace.Child == nil {
+		if currentTrace == nil {
 			break
 		}
 	}
