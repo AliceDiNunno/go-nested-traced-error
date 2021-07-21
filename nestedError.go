@@ -58,9 +58,10 @@ func fingerprint(str string) string {
 }
 
 func (s Stack) Fingerprint() string {
+	println("")
 	hash := ""
 	for _, frame := range s {
-		hash = fmt.Sprintf(hash, "%s%s%d", frame.Filename, frame.Method, frame.Line)
+		hash = fmt.Sprintf("%s%s%s%d", hash, frame.Filename, frame.Method, frame.Line)
 	}
 	return fingerprint(hash)
 }
