@@ -1,4 +1,4 @@
-package go_nested_traced_error
+package GoNestedTracedError
 
 import (
 	"fmt"
